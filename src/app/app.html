@@ -1,18 +1,124 @@
 <!-- {{title}}    #one way binding  only send the component to html -->
 
 <h1>{{title}}</h1>
-<input type="text"[(ngModel)]="title"/> <!--  #two way binding send and receive data from component to html and html to component -->
 
-<h1>{{getTitle()}}</h1>    <!--  # string with function  -->
+<!--  #two way binding send and receive data from component to html and html to component -->
 
-<img [src]="imageUrl"/>  <!-- # property binding -->
+<input type="text"[(ngModel)]="title"/> 
+
+<!--  # string with function  -->
+
+<h1>{{getTitle()}}</h1>  
+
+ <!-- # property binding -->
+
+<img [src]="imageUrl"/> 
 <h1 [innerText]="title"></h1>
 
-<p [textContent]="user?.name"></p> <!-- # safe navigation operator -->
+<!-- # safe navigation operator -->
 
+<p [textContent]="user?.name"></p> 
+
+<!-- # event binding -->
 
 <h1>clicked {{clickcount}} times</h1>
-<button (click)="clickme()">click</button> <!-- # event binding -->
+<button (click)="clickme()">click</button> 
+
+<!--# Structural Directives -->
+        <!--ng for -->
+<h1>ng for example</h1>
+<ul>
+    <li *ngFor="let movie of movies">{{movie}} </li>   
+</ul>
+
+
+<h1> index ngfor</h1>
+<ul>
+    <li *ngFor="let movie of movies;let i =index">{{i}}-{{movie}}</li>  <!-- index ng for-->
+</ul>
+
+
+<h1> First and last ngfor</h1>
+<ul>
+    <li *ngFor="let movie of movies; let isFirst=first ;let islast=last"> <!--First and last-->
+        <strong *ngIf="isFirst">First</strong>
+        <strong *ngIf="islast">Last</strong>
+        {{movie}} 
+    </li>
+    
+</ul>
+
+            <!--ng if-->
+<input type="checkbox" [(ngModel)]="show">
+
+<p *ngIf="true">welcome Angular</p>
+<p *ngIf=show>angular....</p>
+
+           <!--ng switch-->
+
+<div [ngSwitch] ='show'>
+
+    <p *ngSwitchCase="true">True access</p>
+    <p *ngSwitchCase="false">False Acess</p>
+
+</div>
+
+
+<!--Attribute Directives-->
+
+         <!--ng class -->
+
+<input type="checkbox" [(ngModel)]="color">
+<p [ngClass]="{'property':color}">sample text</p>
+
+         <!--ng style-->
+
+<p [ngStyle]="{'color':'red','font-size':'40px'}">MathanKumar</p>
+
+
+        <!--custom directives-->
+<p [appHighlight]="'red'"> this is a custom directives </p>
+
+
+<!--Pipes-->
+     <!--date pipes-->
+
+<p>unformated date:{{toDate}}</p>
+<p>formated date: {{toDate|date}}</p>
+<p>medium date :{{toDate|date:'medium'}}</p>
+
+    <!--slice pipes-->
+<p>learn angular topic {{topic|uppercase}}</p>
+<p>learn angular topic {{topic|lowercase}}</p>
+<p>learn angular topic {{topic| slice:0:7}}</p>
+    
+   <!--currency pipes-->
+<p>currency value {{price|currency}}</p>
+<p>currency value INR{{price|currency:'INR'}}</p>
+
+  <!--key and value-->
+
+<p *ngFor="let item of person|keyvalue">
+    {{item.key}}:{{item.value}}
+</p>
+
+<!--custom pipes-->
+
+<p>{{ "Angular" | reverse }}</p>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
